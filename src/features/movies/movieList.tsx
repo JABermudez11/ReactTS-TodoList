@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { useAppSelector } from '../../store'
 import { MovieCard } from './movieCard';
 import { IMovie } from '../../models/interfaces';

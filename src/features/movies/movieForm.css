@@ -1,0 +1,14 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+Input {
+    padding: 5px;
+    margin: 5px;
+}
+
+button {
+    margin: 5px;
+}

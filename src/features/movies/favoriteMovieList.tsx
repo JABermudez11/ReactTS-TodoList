@@ -1,4 +1,3 @@
-import React, { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { IMovie } from '../../models/interfaces';
 import { useAppSelector } from '../../store';

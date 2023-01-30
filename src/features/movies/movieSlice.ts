@@ -18,18 +18,26 @@ export const movieSlice = createSlice({
     initialState,
     reducers: {
         addMovie: (state, action: PayloadAction<IMovie>) => {
-            state.movies.push({                
-                text: action.payload.text,
-                rating: action.payload.rating,
-            })
+            let i = 0;
+            let ifDuplicate = false
+            while(i < state.movies.length){
+                if(state.movies[i].text === action.payload.text){
+                    ifDuplicate = true
+                    break;
+                }
+                i++
+            }
+            if (!ifDuplicate){
+                state.movies.push({                
+                    text: action.payload.text,
+                    rating: action.payload.rating,
+                })
+            }            
         },
         removeMovie: (state, action: PayloadAction<string>) =>{            
             state.movies = state.movies.filter(movie => {
                 return movie.text != action.payload
             })
-            // state.favorites = state.favorites.filter(favorite => {
-            //     return favorite.text != action.payload
-            // })
         },
         addFavorite: (state, action: PayloadAction<IMovie>) => {
             state.favorites.push({
