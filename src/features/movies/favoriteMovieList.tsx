@@ -17,7 +17,7 @@ const Favorites = () => {
 
     return (
         <div className='favoritesDiv'>
-            <h1>Favorites Page</h1>
+            <h1>Favorites</h1>
             <div className='favoritesList'>
                 {
                     favoritesList.length>0 ? 

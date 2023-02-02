@@ -17,6 +17,7 @@ import {
     Snackbar,    
     IconButton,
     Stack,
+    TextField,
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector } from "../../store";
@@ -26,6 +27,7 @@ export const NewMovieInput: FC = () => {
     
     const [text, setText] = useState<string>('');
     const [rating, setRating] = useState<number>(0);
+    const [description, setDescription] = useState<string>('');
     const [btnDisabled, setBtnDisabled] = useState(true);
     const [openSuccess, setOpenSuccess] = useState(false);
     const [openError, setOpenError] = useState(false);
@@ -48,14 +50,20 @@ export const NewMovieInput: FC = () => {
         setRating(Number(event.target.value));
     }
 
+    const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>): void => {
+        setDescription(event.target.value);
+    }
+
     const handleSubmit = (event: any) => {
         event.preventDefault()
         const newMovie: IMovie = {
           text,
           rating,
+          description,
         }        
         setText('');
         setRating(0);
+        setDescription('');        
         setBtnDisabled(true);
         if(!isDuplicate(newMovie)) {
             dispatch(addMovie(newMovie));            
@@ -143,6 +151,17 @@ export const NewMovieInput: FC = () => {
                     inputProps={{min: 1, max: 10}}
                     value={rating || 0}
                     onChange={handleRatingChange}                    
+                    />
+
+                    <InputLabel>Description</InputLabel>
+                    <TextField 
+                        id='description'
+                        multiline
+                        variant="filled"
+                        maxRows={4}
+                        value={description || ''}
+                        placeholder='Description(optional)..'
+                        onChange={handleDescriptionChange}
                     />
                 </div>
                 <button 
