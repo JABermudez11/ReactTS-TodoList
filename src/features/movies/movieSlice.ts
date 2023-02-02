@@ -21,15 +21,12 @@ export const movieSlice = createSlice({
             state.movies.push({                
                 text: action.payload.text,
                 rating: action.payload.rating,
-            })
+            })            
         },
         removeMovie: (state, action: PayloadAction<string>) =>{            
             state.movies = state.movies.filter(movie => {
                 return movie.text != action.payload
             })
-            // state.favorites = state.favorites.filter(favorite => {
-            //     return favorite.text != action.payload
-            // })
         },
         addFavorite: (state, action: PayloadAction<IMovie>) => {
             state.favorites.push({

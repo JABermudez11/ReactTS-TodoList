@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
-import React from 'react';
 import { IMovie } from '../../models/interfaces';
 
 interface Props {
