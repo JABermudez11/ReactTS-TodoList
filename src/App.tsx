@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 
-const navItems = ['Home', 'Counter', 'Movies', 'Favorites'];
+const navItems = ['Home', 'Movies', 'Favorites'];
 
 const App: FC = () => {  
 
