@@ -21,6 +21,7 @@ export const movieSlice = createSlice({
             state.movies.push({                
                 text: action.payload.text,
                 rating: action.payload.rating,
+                description: action.payload.description,
             })            
         },
         removeMovie: (state, action: PayloadAction<string>) =>{            
@@ -32,6 +33,7 @@ export const movieSlice = createSlice({
             state.favorites.push({
                 text: action.payload.text,
                 rating: action.payload.rating,
+                description: action.payload.description,
             })
         },
         removeFavorite: (state, action: PayloadAction<string>) => {

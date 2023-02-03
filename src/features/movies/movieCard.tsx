@@ -1,5 +1,11 @@
-import { Box, Button, ButtonGroup, Card, CardActions, CardContent, Typography } from '@mui/material';
-import React from 'react';
+import { 
+    Button, 
+    Card, 
+    CardActions, 
+    CardContent, 
+    Typography 
+} from '@mui/material';
+
 import { IMovie } from '../../models/interfaces';
 
 interface Props {
@@ -16,7 +22,7 @@ export const MovieCard = ({movie, handleRemove, handleFavorite}: Props) => {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     movie name
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography variant="h3" component="div">
                     {movie.text}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -24,6 +30,16 @@ export const MovieCard = ({movie, handleRemove, handleFavorite}: Props) => {
                 </Typography>
                 <Typography variant="body2">
                     {movie.rating}
+                </Typography>
+                <Typography color="text.secondary">
+                    Description
+                </Typography>
+                <Typography >
+                    {
+                        movie.description?
+                            movie.description:
+                            <h4>No Description added</h4>
+                    }
                 </Typography>
             </CardContent>
             <CardActions sx={{display: 'flex', justifyContent: 'space-between'}}>

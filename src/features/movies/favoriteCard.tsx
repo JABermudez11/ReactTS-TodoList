@@ -13,7 +13,7 @@ export const FavoriteCard = ({favorite, handleRemove}: Props) => {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     movie name
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography variant="h3" component="div">
                     {favorite.text}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -21,6 +21,16 @@ export const FavoriteCard = ({favorite, handleRemove}: Props) => {
                 </Typography>
                 <Typography variant="body2">
                     {favorite.rating}
+                </Typography>
+                <Typography color="text.secondary">
+                    Description
+                </Typography>
+                <Typography >
+                    {
+                        favorite.description?
+                            favorite.description:
+                            <h4>No Description added</h4>
+                    }
                 </Typography>
             </CardContent>
             <CardActions sx={{display: 'flex'}}>

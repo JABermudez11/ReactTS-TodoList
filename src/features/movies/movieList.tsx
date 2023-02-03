@@ -22,7 +22,7 @@ export const MovieList: FC = () => {
 
     return(
         <div className='moviesDiv'>
-            <h1>Movies Page</h1>            
+            <h1>Movies</h1>            
             <div className='form'>
                 <NewMovieInput />
             </div>            
