@@ -4,20 +4,20 @@ import { MovieCard } from './movieCard';
 import { IMovie } from '../../models/interfaces';
 import { NewMovieInput } from './movieForm';
 import { useDispatch } from 'react-redux';
-import { addFavorite, removeMovie } from './movieSlice';
+import { addFavorite, deleteMovie } from './movieSlice';
 
 
 export const MovieList: FC = () => {
         
     const movies=useAppSelector(state => state.movie.movies);
     const dispatch = useDispatch();
-
-    const handleFavorite = (movieToFavorite: IMovie): void => {
-        dispatch(addFavorite(movieToFavorite));
+    
+    const handleFavorite = (movieToFavorite: IMovie): void => {                
+        dispatch(addFavorite(movieToFavorite));        
     }
 
-    const handleRemove = (movieNameToRemove: string): void => {
-        dispatch(removeMovie(movieNameToRemove))        ;
+    const handleDelete = (movieToRemove: string): void => {        
+        dispatch(deleteMovie(movieToRemove));
     }
 
     return(
@@ -34,7 +34,7 @@ export const MovieList: FC = () => {
                                 <MovieCard
                                     key={key}
                                     movie={movie}
-                                    handleRemove={handleRemove}
+                                    handleDelete={handleDelete}
                                     handleFavorite={handleFavorite}
                                 />
                             );

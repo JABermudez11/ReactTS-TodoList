@@ -7,10 +7,13 @@ import { removeFavorite } from './movieSlice';
 
 const Favorites = () => {
     
-    const favoritesList = useAppSelector(state => state.movie.favorites);
+    const moviesList = useAppSelector(state => state.movie.movies);
+    const favoritesList = moviesList.filter(movie => {
+        return movie.isFavorited === true
+    })
     const dispatch = useDispatch()
 
-    const handleRemove = (favoriteToRemove: string) => {
+    const handleUnfavorite = (favoriteToRemove: IMovie) => {
         dispatch(removeFavorite(favoriteToRemove));
     }
 
@@ -26,7 +29,7 @@ const Favorites = () => {
                                 <FavoriteCard 
                                     key={key}
                                     favorite={favorite}
-                                    handleRemove={handleRemove}
+                                    handleUnfavorite={handleUnfavorite}                                    
                                 />
                             )
                         }):

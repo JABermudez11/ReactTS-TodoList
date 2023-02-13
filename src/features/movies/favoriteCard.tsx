@@ -2,11 +2,11 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/materia
 import { IMovie } from '../../models/interfaces';
 
 interface Props {
-    favorite: IMovie,
-    handleRemove(movieNameToRemove: string): void,    
+    favorite: IMovie,    
+    handleUnfavorite(movieToRemove: IMovie): void,    
 }
 
-export const FavoriteCard = ({favorite, handleRemove}: Props) => {
+export const FavoriteCard = ({favorite, handleUnfavorite}: Props) => {
     return(
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
@@ -35,9 +35,9 @@ export const FavoriteCard = ({favorite, handleRemove}: Props) => {
             </CardContent>
             <CardActions sx={{display: 'flex'}}>
                 <Button size="small"
-                    onClick={()=>handleRemove(favorite.text)}
+                    onClick={()=>handleUnfavorite(favorite)}
                 >
-                    Delete
+                    Unfavorite
                 </Button>
             </CardActions>
         </Card>
