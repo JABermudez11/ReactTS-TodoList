@@ -9,13 +9,13 @@ import {
 import { IMovie } from '../../models/interfaces';
 
 interface Props {
-    movie: IMovie,
-    handleRemove(movieNameToRemove: string): void,
+    movie: IMovie,    
+    handleDelete(movieToDelete: string): void,
     handleFavorite(movieToFavorite: IMovie): void,
 }
 
 
-export const MovieCard = ({movie, handleRemove, handleFavorite}: Props) => {
+export const MovieCard = ({movie, handleDelete, handleFavorite}: Props) => {
     return(
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
@@ -49,7 +49,7 @@ export const MovieCard = ({movie, handleRemove, handleFavorite}: Props) => {
                     Favorite
                 </Button>
                 <Button size="small"
-                    onClick={()=>handleRemove(movie.text)}
+                    onClick={()=>handleDelete(movie.text)}
                 >
                     Delete
                 </Button>

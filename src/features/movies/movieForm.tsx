@@ -60,6 +60,7 @@ export const NewMovieInput: FC = () => {
           text,
           rating,
           description,
+          isFavorited: false,
         }        
         setText('');
         setRating(0);

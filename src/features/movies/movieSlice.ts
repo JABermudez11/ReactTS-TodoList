@@ -4,13 +4,11 @@ import type { RootState } from '../../store'
 import { IMovie } from '../../models/interfaces';
 
 export interface MoviesState {
-    movies: IMovie[],
-    favorites: IMovie[],
+    movies: IMovie[],    
 }
 
 const initialState: MoviesState = {    
-    movies: [],
-    favorites: [],
+    movies: [],    
 }
 
 export const movieSlice = createSlice({
@@ -22,32 +20,34 @@ export const movieSlice = createSlice({
                 text: action.payload.text,
                 rating: action.payload.rating,
                 description: action.payload.description,
+                isFavorited: action.payload.isFavorited,
             })            
         },
-        removeMovie: (state, action: PayloadAction<string>) =>{            
+        deleteMovie: (state, action: PayloadAction<string>) =>{            
             state.movies = state.movies.filter(movie => {
                 return movie.text != action.payload
             })
         },
-        addFavorite: (state, action: PayloadAction<IMovie>) => {
-            state.favorites.push({
-                text: action.payload.text,
-                rating: action.payload.rating,
-                description: action.payload.description,
-            })
+        addFavorite: (state, action: PayloadAction<IMovie>) => {            
+            for(let i = 0; i < state.movies.length; i++) {
+                if (state.movies[i].text === action.payload.text) {
+                    state.movies[i].isFavorited = true;                    
+                }
+            }            
         },
-        removeFavorite: (state, action: PayloadAction<string>) => {
-            state.favorites = state.movies.filter(favorite => {
-                return favorite.text != action.payload
-            })
+        removeFavorite: (state, action: PayloadAction<IMovie>) => {
+            for(let i = 0; i < state.movies.length; i++) {
+                if (state.movies[i].text === action.payload.text) {
+                    state.movies[i].isFavorited = false;                    
+                }
+            }            
         },
     }
 })
 
-export const { addMovie, removeMovie, addFavorite, removeFavorite } = movieSlice.actions
+export const { addMovie, deleteMovie, addFavorite, removeFavorite } = movieSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectMovies = (state: RootState) => state.movie.movies
-export const selectFavorites = (state: RootState) => state.movie.favorites
 
 export default movieSlice.reducer
